@@ -1,0 +1,210 @@
+{
+    "expand": "schema,names",
+    "startAt": 0,
+    "maxResults": 50,
+    "total": 3,
+    "issues": [
+        {
+            "id": "12345",
+            "key": "TK-123",
+            "fields": {
+                "worklog": {
+                    "startAt": 0,
+                    "maxResults": 20,
+                    "total": 1,
+                    "worklogs": [
+                        {
+                            "author": {
+                                "name": "joe.doe",
+                                "key": "joe.doe",
+                                "displayName": "joe.doe"
+                            },
+                            "created": "2017-01-01T11:59:33.096+0100",
+                            "updated": "2017-01-01T11:59:33.096+0100",
+                            "started": "2016-12-28T11:59:00.000+0100",
+                            "timeSpent": "2h",
+                            "timeSpentSeconds": 7200,
+                            "id": "29605",
+                            "issueId": "12345"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": "88888",
+            "key": "TK-734",
+            "fields": {
+                "worklog": {
+                    "startAt": 0,
+                    "maxResults": 20,
+                    "total": 1,
+                    "worklogs": [
+                        {
+                            "author": {
+                                "name": "joe.doe",
+                                "key": "joe.doe",
+                                "displayName": "joe.doe"
+                            },
+                            "created": "2017-05-10T11:59:33.096+0100",
+                            "updated": "2017-05-12T11:59:33.096+0100",
+                            "started": "2017-05-07T11:59:00.000+0100",
+                            "timeSpent": "2h",
+                            "timeSpentSeconds": 7200,
+                            "id": "99999",
+                            "issueId": "88888"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": "23456",
+            "key": "TK-234",
+            "fields": {
+                "worklog": {
+                    "startAt": 0,
+                    "maxResults": 20,
+                    "total": 3,
+                    "worklogs": [
+                        {
+                            "author": {
+                                "name": "joe.doe",
+                                "key": "joe.doe",
+                                "displayName": "joe.doe"
+                            },
+                            "created": "2017-08-12T10:15:56.084+0100",
+                            "updated": "2017-08-12T10:15:56.084+0100",
+                            "started": "2017-08-02T10:15:00.000+0100",
+                            "timeSpent": "2h",
+                            "timeSpentSeconds": 7200,
+                            "id": "29711",
+                            "issueId": "23456"
+                        },
+                        {
+                            "author": {
+                                "name": "joe.doe",
+                                "key": "joe.doe",
+                                "displayName": "joe.doe"
+                            },
+                            "created": "2017-08-24T23:47:32.458+0100",
+                            "updated": "2017-08-24T23:47:32.458+0100",
+                            "started": "2017-08-23T23:47:00.000+0100",
+                            "timeSpent": "7h",
+                            "timeSpentSeconds": 25200,
+                            "id": "30322",
+                            "issueId": "23456"
+                        },
+                        {
+                            "author": {
+                                "name": "joe.doe",
+                                "key": "joe.doe",
+                                "displayName": "joe.doe"
+                            },
+                            "updateAuthor": {
+                                "name": "joe.doe",
+                                "key": "joe.doe",
+                                "displayName": "joe.doe"
+                            },
+                            "created": "2017-08-24T23:49:21.173+0100",
+                            "updated": "2017-08-24T23:49:21.173+0100",
+                            "started": "2017-08-24T23:49:00.000+0100",
+                            "timeSpent": "7h",
+                            "timeSpentSeconds": 25200,
+                            "id": "30323",
+                            "issueId": "23456"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": "98765",
+            "key": "TK-987",
+            "fields": {
+                "worklog": {
+                    "startAt": 0,
+                    "maxResults": 20,
+                    "total": 4,
+                    "worklogs": [
+                        {
+                            "author": {
+                                "name": "joe.doe",
+                                "key": "joe.doe",
+                                "accountId": "435a4f:9865cc55-3456-abc7-654b-1fa0d9a98a561",
+                                "displayName": "joe.doe"
+                            },
+                            "created": "2017-08-10T12:28:49.128+0100",
+                            "updated": "2017-08-10T12:28:49.128+0100",
+                            "started": "2017-08-10T12:28:00.000+0100",
+                            "timeSpent": "4h",
+                            "timeSpentSeconds": 14400,
+                            "id": "29606",
+                            "issueId": "98765"
+                        },
+                        {
+                            "author": {
+                                "name": "joe.doe",
+                                "key": "joe.doe",
+                                "accountId": "435a4f:9865cc55-3456-abc7-654b-1fa0d9a98a561",
+                                "displayName": "joe.doe"
+                            },
+                            "created": "2017-08-11T13:54:09.467+0100",
+                            "updated": "2017-08-11T13:54:09.467+0100",
+                            "started": "2017-08-11T13:54:00.000+0100",
+                            "timeSpent": "7h",
+                            "timeSpentSeconds": 25200,
+                            "id": "29705",
+                            "issueId": "98765"
+                        },
+                        {
+                            "author": {
+                                "name": "joe.doe",
+                                "key": "joe.doe",
+                                "accountId": "435a4f:9865cc55-3456-abc7-654b-1fa0d9a98a561",
+                                "displayName": "joe.doe"
+                            },
+                            "created": "2017-08-12T13:29:21.356+0100",
+                            "updated": "2017-08-12T13:29:21.356+0100",
+                            "started": "2017-08-07T13:29:00.000+0100",
+                            "timeSpent": "3h",
+                            "timeSpentSeconds": 10800,
+                            "id": "29712",
+                            "issueId": "98765"
+                        },
+                        {
+                            "author": {
+                                "name": "joe.doe",
+                                "key": "joe.doe",
+                                "accountId": "435a4f:9865cc55-3456-abc7-654b-1fa0d9a98a561",
+                                "displayName": "joe.doe"
+                            },
+                            "created": "2017-08-18T07:28:53.627+0100",
+                            "updated": "2017-08-18T07:28:53.627+0100",
+                            "started": "2017-08-17T07:28:00.000+0100",
+                            "timeSpent": "4h",
+                            "timeSpentSeconds": 14400,
+                            "id": "30100",
+                            "issueId": "98765"
+                        },
+                        {
+                            "author": {
+                                "name": "joe.doe",
+                                "key": "joe.doe",
+                                "accountId": "435a4f:9865cc55-3456-abc7-654b-1fa0d9a98a561",
+                                "displayName": "joe.doe"
+                            },
+                            "created": "2016-12-10T07:29:10.591+0100",
+                            "updated": "2016-12-10T07:29:10.591+0100",
+                            "started": "2017-08-16T07:29:00.000+0100",
+                            "timeSpent": "7h",
+                            "timeSpentSeconds": 25200,
+                            "id": "30101",
+                            "issueId": "98765"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

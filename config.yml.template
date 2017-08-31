@@ -1,0 +1,6 @@
+jiraurl: ""
+jirauser: ""
+jirapassword: ""
+datefrom : "2017-03-01"
+hoursdaily: 7
+maxsearchresults: 1000

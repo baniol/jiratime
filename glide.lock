@@ -1,0 +1,43 @@
+hash: 7bec330273b7c7c321ddadecbaf236bb5430c09d863ed2f2996542c284cdde4d
+updated: 2017-08-29T22:06:16.210498351+02:00
+imports:
+- name: github.com/andygrunwald/go-jira
+  version: acbc88d59582a4885dbd82fd775caa7c15245171
+- name: github.com/armon/go-radix
+  version: 1fca145dffbcaa8fe914309b1ec0cfc67500fe61
+- name: github.com/bgentry/speakeasy
+  version: 4aabc24848ce5fd31929f7d1e4ea74d3709c14cd
+- name: github.com/fatih/structs
+  version: 7e5a8eef611ee84dd359503f3969f80df4c50723
+- name: github.com/google/go-querystring
+  version: 53e6ce116135b80d037921a7fdd5138cf32d7a8a
+  subpackages:
+  - query
+- name: github.com/hashicorp/errwrap
+  version: 7554cd9344cec97297fa6649b055a8c98c2a1e55
+- name: github.com/hashicorp/go-multierror
+  version: 83588e72410abfbe4df460eeb6f30841ae47d4c4
+- name: github.com/mattn/go-isatty
+  version: fc9e8d8ef48496124e79ae0df75490096eccf6fe
+- name: github.com/mitchellh/cli
+  version: 0ce7cd515f64496ee660ab19f6bbf373945d3af0
+- name: github.com/mitchellh/go-homedir
+  version: b8bc1bf767474819792c23f32d8286a45736f1c6
+- name: github.com/posener/complete
+  version: 9f41f7636a724791a3b8b1d35e84caa1124f0d3c
+  subpackages:
+  - cmd
+  - cmd/install
+  - match
+- name: github.com/trivago/tgo
+  version: e4d1ddd28c17dd89ed26327cf69fded22060671b
+  subpackages:
+  - tcontainer
+  - treflect
+- name: golang.org/x/sys
+  version: ab9e364efd8b52800ff7ee48a9ffba4e0ed78dfb
+  subpackages:
+  - unix
+- name: gopkg.in/yaml.v2
+  version: eb3733d160e74a9c7e442f435eb3bea458e1d19f
+testImports: []

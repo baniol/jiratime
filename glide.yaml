@@ -1,0 +1,5 @@
+package: jira-client
+import:
+- package: github.com/andygrunwald/go-jira
+- package: github.com/mitchellh/cli
+- package: github.com/mitchellh/go-homedir
