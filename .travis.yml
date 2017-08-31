@@ -1,0 +1,13 @@
+os: osx
+language: go
+go:
+- tip
+script:
+- ./build.sh
+deploy:
+  provider: releases
+  api_key:
+    secure: c1DlVgEzP2ReTQ5nHeWqgi1iVqIGlYhFcxrbpdRB+162vxJSnBURdxhyaDx0otGzUF9/bEt9+wYpQigZCMvAg7o6NYCNXAGiM7faf+XcOWy9KTU/3z+G+9ZVPKJxcnm2tWuDxhR0zl+YIMso+79NnuAx5P/sECcFTefrxFkIgKQ8FoHawCzNNtB15nqPM175eDLrIItQIcWfsUEBrsDJ37S96W7fQnI24/+fWdDm1ol6MMHoUw3jvmKKId8C/ore+y1fgmr5WOBhHIZPtXESUyUFTAw93FwffO88mWGzbusqsXk1zOt5MTUwK+/xUCI7wxagLejNRQa+JliuRPLXTtjMcnweqXgm1jhAil6Aj3OwLBI0cata+Qxk0N6bxJGCF7V2v7YgOOz3l0+mPdRbmeyf/6Z+3h8CDigiOCGatvWyykA/czQVHmon+gP+Yc0q3r7aJ0FRj/HFr5D/MV84MMQYqKB9qXSWUYw3sRujj0v65bNdpW9Jhv7WxnVn9wPTW6BaQjspqpS7q7TQ7Fft/KwPy/g8N/jQ/AWJ4bySflHQXFwQWkScSnRVVsfBt10O/rwzkUV3+bBjFco6MoY8a+gJmRBaExVcLyavM1Io8WMs5b70S6YpcfXNanWwEkjdhUcQtEU/JY8H8M04pwfV/d8wkSlA4Em2DOwylp8pjk0=
+  file: jiratime
+  on:
+    repo: baniol/jiratime
