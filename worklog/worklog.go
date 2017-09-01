@@ -46,7 +46,7 @@ func GetUserTickets(c jiraGetter) []jira.Issue {
 // Worklog returns a list of Issues where a particular user saved working hours
 func (s *jiraSession) getUserWorklog() ([]jira.Issue, error) {
 	jql := fmt.Sprintf("worklogDate>=%s AND worklogAuthor=%s", jiraConfig.DateFrom, jiraConfig.JiraUser)
-	options := &jira.SearchOptions{StartAt: 1, MaxResults: jiraConfig.MaxSearchResults, Fields: []string{"worklog"}}
+	options := &jira.SearchOptions{MaxResults: jiraConfig.MaxSearchResults, Fields: []string{"worklog"}}
 	tickets, _, err := s.Client.Issue.Search(jql, options)
 
 	if err != nil {
