@@ -1,9 +1,12 @@
 os: osx
 language: go
 go:
-- tip
+  - tip
+install:
+  - "go get -d -v ./..."
+  - "go build -v ./..."
 script:
-- ./build.sh
+  - ./build.sh
 deploy:
   provider: releases
   api_key:
@@ -11,4 +14,5 @@ deploy:
   file: bin/jiratime
   skip_cleanup: true
   on:
+    repo: baniol/jiratime
     tags: true
