@@ -1,6 +1,8 @@
+# source: https://github.com/rightscale/go-boilerplate/blob/master/Makefile
+
 NAME=jiratime
 
-VERSION=0.1.11
+VERSION=0.1.12
 
 DEPEND=golang.org/x/tools/cmd/cover \
 		github.com/mattn/goveralls \
@@ -9,13 +11,10 @@ DEPEND=golang.org/x/tools/cmd/cover \
 
 
 # TRAVIS_BRANCH?=master
-# DATE=$(shell date '+%F %T')
+DATE=$(shell date '+%F %T')
 TRAVIS_COMMIT?=$(shell git symbolic-ref HEAD | cut -d"/" -f 3)
 
-# produce a version string that is embedded into the binary that captures the branch, the date
-# and the commit we're building. This works particularly well if you are using release branch
-# names of the form "v1.2.3"
-# VERSION=$(NAME) $(TRAVIS_BRANCH) - $(DATE) - $(TRAVIS_COMMIT)
+# VERSION=$(NAME) $(DATE) - $(TRAVIS_COMMIT)
 VFLAG=-X 'main.VERSION=$(VERSION) $(TRAVIS_COMMIT)'
 
 .PHONY: depend clean default
@@ -71,4 +70,4 @@ test:
 
 cover: lint
 		go test -v -covermode=count -coverprofile=coverage.out ./worklog
-		goveralls -coverprofile=coverage.out -service travis-ci -repotoken $COVERALLS_TOKEN	
+		goveralls -coverprofile=coverage.out -service travis-ci -repotoken $(COVERALLS_TOKEN)
