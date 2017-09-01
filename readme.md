@@ -1,4 +1,4 @@
-# jiratime
+# jiratime [![Build Status](https://travis-ci.org/baniol/jiratime.svg?branch=master)](https://travis-ci.org/baniol/jiratime)
 
 Small CLI utility for displaying logged jira hours.
 
