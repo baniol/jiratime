@@ -1,3 +1,3 @@
 #!/bin/bash
 
-go build -o bin/myawesomeapp -i .
+go build -o bin/jiratime -i .
