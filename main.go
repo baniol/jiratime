@@ -38,7 +38,7 @@ func main() {
 
 	cli := &cli.CLI{
 		Name:     "jiratime",
-		Version:  "0.1.8",
+		Version:  Version,
 		Args:     args,
 		Commands: cmd,
 	}

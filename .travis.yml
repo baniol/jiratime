@@ -4,12 +4,14 @@ go:
   - tip
 install: true
 before_script:
-  - go vet `go list ./... | grep -v '/vendor/'`
-  - PKGS=$(go list ./... | grep -v /vendor/) 
+  - PKGS=$(go list ./... | grep -v /vendor/)
+  - go get golang.org/x/tools/cmd/cover
+  - go get github.com/mattn/goveralls
 script:
   - go build -o bin/jiratime -i .
-  - go test -v -race $PKGS
   - go vet $PKGS
+  - go test -v -covermode=count -coverprofile=coverage.out ./worklog
+  - goveralls -coverprofile=coverage.out -service travis-ci -repotoken $COVERALLS_TOKEN
 deploy:
   provider: releases
   api_key:
