@@ -78,5 +78,5 @@ cover-local:
 		go test -coverprofile=coverage.out -covermode=count $(pkg);\
 		tail -n +2 coverage.out >> coverage-all.out;)
 	go tool cover -html=coverage-all.out
-	@rm coverage.out
-	@rm coverage-all.out
+	rm coverage.out
+	rm coverage-all.out

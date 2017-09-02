@@ -2,9 +2,12 @@ package worklog
 
 import (
 	"encoding/json"
-	gojira "github.com/andygrunwald/go-jira"
 	"io/ioutil"
+	"reflect"
 	"testing"
+
+	gojira "github.com/andygrunwald/go-jira"
+	"github.com/baniol/jiratime/config"
 )
 
 type searchResult struct {
@@ -91,4 +94,14 @@ func Test_MapHoursPerDay(t *testing.T) {
 		t.Errorf("Expected %v but got %v", expectedMap, perDay)
 	}
 
+}
+
+func Test_NewClient(t *testing.T) {
+	conf := config.Config{JiraUser: "test.user"}
+	client := NewClient(&conf)
+	check := reflect.TypeOf(client).String()
+	expected := "*worklog.JiraSession"
+	if check != expected {
+		t.Errorf("Expected %v but got %v", expected, check)
+	}
 }

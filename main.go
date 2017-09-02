@@ -8,9 +8,18 @@ import (
 	"github.com/mitchellh/cli"
 )
 
+// VERSION set with Makefile using linker flag, must be uninitialized
+var VERSION string
+
 var cmd map[string]cli.CommandFactory
 
 func init() {
+
+	// provide a default version string if app is built without makefile
+	if VERSION == "" {
+		VERSION = "version-manually-built"
+	}
+
 	ui := &cli.BasicUi{
 		Writer:      os.Stdout,
 		ErrorWriter: os.Stderr,

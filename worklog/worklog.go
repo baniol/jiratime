@@ -2,16 +2,20 @@ package worklog
 
 import (
 	"fmt"
+	"time"
+
 	"github.com/andygrunwald/go-jira"
 	"github.com/baniol/jiratime/config"
-	"time"
 )
 
 type jiraGetter interface {
 	getUserWorklog() ([]jira.Issue, error)
 }
 
-type jiraSession struct {
+var jiratimeConfig *config.Config
+
+// JiraSession represents a struct with jiraClient
+type JiraSession struct {
 	Client *jira.Client
 }
 
@@ -21,17 +25,18 @@ type HoursPerDay map[string]int
 // HoursPerTicket maps logged hours per ticket
 type HoursPerTicket map[string]int
 
-var jiraConfig *config.Config
+// var jiraConfig *config.Config
 
-func NewClient(config *config.Config) *jiraSession {
+// NewClient returns an instance on JiraSession containing jiraClient.
+// It sets global jiratimeConfig with passed config parameter.
+func NewClient(config *config.Config) *JiraSession {
 	jiraClient, err := jira.NewClient(nil, config.JiraURL)
 	jiraClient.Authentication.SetBasicAuth(config.JiraUser, config.JiraPassword)
 	if err != nil {
 		panic(err)
 	}
-	// @TODO does setting the config belong to the function ?
-	jiraConfig = config
-	return &jiraSession{Client: jiraClient}
+	jiratimeConfig = config
+	return &JiraSession{Client: jiraClient}
 }
 
 // GetUserTickets is an expored function and returns a list of user worklogs
@@ -44,9 +49,9 @@ func GetUserTickets(c jiraGetter) []jira.Issue {
 }
 
 // Worklog returns a list of Issues where a particular user saved working hours
-func (s *jiraSession) getUserWorklog() ([]jira.Issue, error) {
-	jql := fmt.Sprintf("worklogDate>=%s AND worklogAuthor=%s", jiraConfig.DateFrom, jiraConfig.JiraUser)
-	options := &jira.SearchOptions{MaxResults: jiraConfig.MaxSearchResults, Fields: []string{"worklog"}}
+func (s *JiraSession) getUserWorklog() ([]jira.Issue, error) {
+	jql := fmt.Sprintf("worklogDate>=%s AND worklogAuthor=%s", jiratimeConfig.DateFrom, jiratimeConfig.JiraUser)
+	options := &jira.SearchOptions{MaxResults: jiratimeConfig.MaxSearchResults, Fields: []string{"worklog"}}
 	tickets, _, err := s.Client.Issue.Search(jql, options)
 
 	if err != nil {

@@ -2,6 +2,7 @@ package worklog
 
 import (
 	"fmt"
+
 	"github.com/baniol/jiratime/calendar"
 )
 
@@ -33,7 +34,7 @@ func DisplayPerMonth(perDay HoursPerDay, year int, month int) {
 		fmt.Printf("%s\t%d\n", d, hrs)
 	}
 
-	required := len(filtered) * jiraConfig.HoursDaily
+	required := len(filtered) * jiratimeConfig.HoursDaily
 
 	fmt.Println("-----------------")
 	fmt.Println("Logged\tRequired\t")
