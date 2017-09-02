@@ -1,6 +1,4 @@
-# jiratime [![Build Status](https://travis-ci.org/baniol/jiratime.svg?branch=master)](https://travis-ci.org/baniol/jiratime)
-
-[![Coverage Status](https://coveralls.io/repos/github/baniol/jiratime/badge.svg?branch=master)](https://coveralls.io/github/baniol/jiratime?branch=master)
+# jiratime [![Build Status](https://travis-ci.org/baniol/jiratime.svg?branch=master)](https://travis-ci.org/baniol/jiratime) [![Coverage Status](https://coveralls.io/repos/github/baniol/jiratime/badge.svg?branch=master)](https://coveralls.io/github/baniol/jiratime?branch=master)
 
 Small CLI utility for displaying logged jira hours.
 
