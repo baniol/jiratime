@@ -71,3 +71,12 @@ test:
 cover: lint
 		go test -v -covermode=count -coverprofile=coverage.out ./worklog
 		goveralls -coverprofile=coverage.out -service travis-ci -repotoken $(COVERALLS_TOKEN)
+
+cover-local:
+	echo "mode: count" > coverage-all.out
+	$(foreach pkg,./worklog,\
+		go test -coverprofile=coverage.out -covermode=count $(pkg);\
+		tail -n +2 coverage.out >> coverage-all.out;)
+	go tool cover -html=coverage-all.out
+	@rm coverage.out
+	@rm coverage-all.out
