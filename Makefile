@@ -9,6 +9,7 @@ DEPEND=golang.org/x/tools/cmd/cover \
        	github.com/Masterminds/glide 
 # github.com/golang/lint/golint
 
+# PACKAGES=$(go list ./... |grep -v /vendor/)
 
 # TRAVIS_BRANCH?=master
 DATE=$(shell date '+%F %T')
@@ -66,17 +67,24 @@ lint:
 travis-test: cover
 
 test:
-	go test ./worklog -v -cover
+	go test $$(go list ./... |grep -v /vendor/) -v -cover
 
 cover: lint
-		go test -v -covermode=count -coverprofile=coverage.out ./worklog
-		goveralls -coverprofile=coverage.out -service travis-ci -repotoken $(COVERALLS_TOKEN)
+	echo "mode: count" > coverage-all.out
+	for pkg in `go list ./... |grep -v /vendor/`; do \
+		go test -v -covermode=count -coverprofile=coverage.out $$pkg; \
+		tail -n +2 coverage.out >> coverage-all.out; \
+	done
+	goveralls -coverprofile=coverage-all.out -service travis-ci -repotoken $(COVERALLS_TOKEN)
 
 cover-local:
 	echo "mode: count" > coverage-all.out
-	$(foreach pkg,./worklog,\
-		go test -coverprofile=coverage.out -covermode=count $(pkg);\
-		tail -n +2 coverage.out >> coverage-all.out;)
+	for pkg in `go list ./... |grep -v /vendor/`; do \
+		go test -v -covermode=count -coverprofile=coverage.out $$pkg; \
+		tail -n +2 coverage.out >> coverage-all.out; \
+	done
 	go tool cover -html=coverage-all.out
 	rm coverage.out
 	rm coverage-all.out
+
+	

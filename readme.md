@@ -2,6 +2,28 @@
 
 Small CLI utility for displaying logged jira hours.
 
+## Installation
+
+Go to [releases](https://github.com/baniol/jiratime/releases) and choose the latest stable package.
+
+## Configiration
+
+There must be a file `jiratimeconfig.yml` present in the user's home directory (see the `config.yml.template` for reference):
+
+```
+jiraurl: ""
+jirauser: ""
+jirapassword: ""
+datefrom : "2017-03-01"
+hoursdaily: 7
+maxsearchresults: 1000
+```
+
+Configuration file path can be passe with `-config` parameter, e.g.
+```
+jiratime days -config <path_to_config_file>
+```
+
 ## Usage
 
 ### `jiratime days`
@@ -42,9 +64,9 @@ Logged  Required
 
 #### Paramteters
 
-* `-year` - optional (current year if not specified)
+* `-year` - optional (current year if not specified); takes numeric month as value, e.g. `-month 8` for August
 
-* `-month` - optional (current month if not specified)
+* `-month` - optional (current month if not specified); e.g. `-year 2016`
 
 ### `jiratime tickets`
 
@@ -60,17 +82,4 @@ TK-8    8
 TK-223  16
 ----------------------
 Total logged: 84 hours
-```
-
-## Configiration
-
-There must be a file `jiratimeconfig.yml` present in the user's home directory (see the `config.yml.template` for reference):
-
-```
-jiraurl: ""
-jirauser: ""
-jirapassword: ""
-datefrom : "2017-03-01"
-hoursdaily: 7
-maxsearchresults: 1000
 ```

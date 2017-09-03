@@ -6,7 +6,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/mitchellh/go-homedir"
+	homedir "github.com/mitchellh/go-homedir"
+
 	"gopkg.in/yaml.v2"
 )
 
@@ -67,18 +68,32 @@ func readConfig(fileContent []byte) (Config, error) {
 	return config, err
 }
 
-// GetConfig returns the Config instance
-func GetConfig() (Config, error) {
+// getConfigFilePath returns a path to jiratime config file
+func getConfigFilePath(pathParam string) (string, error) {
+
+	// Path specified as cli param
+	if pathParam != "" {
+		return pathParam, nil
+	}
 
 	userHome, err := homedir.Dir()
 	if err != nil {
-		panic(err)
+		return "", err
 	}
 	fileName := fmt.Sprintf("%s/jiratimeconfig.yml", userHome)
-	if _, err := os.Stat(fileName); os.IsNotExist(err) {
+	return fileName, nil
+}
+
+// GetConfig returns the Config instance
+// pathParam is an optional param passed from user input
+func GetConfig(pathParam string) (Config, error) {
+
+	filePath, _ := getConfigFilePath(pathParam)
+
+	if _, err := os.Stat(filePath); os.IsNotExist(err) {
 		return Config{}, err
 	}
-	content, err := readFile(fileName)
+	content, err := readFile(filePath)
 	if err != nil {
 		return Config{}, err
 	}

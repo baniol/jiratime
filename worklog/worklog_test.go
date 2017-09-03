@@ -104,4 +104,6 @@ func Test_NewClient(t *testing.T) {
 	if check != expected {
 		t.Errorf("Expected %v but got %v", expected, check)
 	}
+
+	// @TODO check content of jiratimeConfig here ?
 }

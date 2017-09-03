@@ -1,28 +1,19 @@
 package commands
 
 import (
-	"flag"
-	"fmt"
 	"strings"
 
 	"github.com/baniol/jiratime/calendar"
-	"github.com/baniol/jiratime/config"
 	"github.com/baniol/jiratime/worklog"
-	"github.com/mitchellh/cli"
 )
 
 type DaysCommand struct {
-	Ui cli.Ui
+	Meta
 }
 
 func (c *DaysCommand) Run(args []string) int {
-	config, err := config.GetConfig()
-	if err != nil {
-		c.Ui.Error(fmt.Sprintf("Error: %s", err))
-		return 1
-	}
 
-	cmdFlags := flag.NewFlagSet("fmt", flag.ContinueOnError)
+	cmdFlags := c.FlagSet("days")
 	var yearParam int
 	var monthParam int
 	cmdFlags.IntVar(&yearParam, "year", 0, "Year to display")
@@ -31,8 +22,12 @@ func (c *DaysCommand) Run(args []string) int {
 	if err := cmdFlags.Parse(args); err != nil {
 		return 1
 	}
-
-	client := worklog.NewClient(&config)
+	configPath := cmdFlags.Lookup("config").Value.String()
+	config, err := c.Config(configPath)
+	if err != nil {
+		return 1
+	}
+	client := worklog.NewClient(config)
 	tickets := worklog.GetUserTickets(client)
 
 	year, month := calendar.PrepareDateParams(yearParam, monthParam)

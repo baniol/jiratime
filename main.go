@@ -13,6 +13,8 @@ var VERSION string
 
 var cmd map[string]cli.CommandFactory
 
+var args = os.Args[1:]
+
 func init() {
 
 	// provide a default version string if app is built without makefile
@@ -25,25 +27,27 @@ func init() {
 		ErrorWriter: os.Stderr,
 	}
 
+	meta := commands.Meta{
+		Ui: ui,
+	}
+
 	cmd = map[string]cli.CommandFactory{
 
 		"days": func() (cli.Command, error) {
 			return &commands.DaysCommand{
-				Ui: ui,
+				Meta: meta,
 			}, nil
 		},
 
 		"tickets": func() (cli.Command, error) {
 			return &commands.TicketCommand{
-				Ui: ui,
+				Meta: meta,
 			}, nil
 		},
 	}
 }
 
 func main() {
-
-	args := os.Args[1:]
 
 	cli := &cli.CLI{
 		Name:     "jiratime",

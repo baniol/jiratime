@@ -25,8 +25,6 @@ type HoursPerDay map[string]int
 // HoursPerTicket maps logged hours per ticket
 type HoursPerTicket map[string]int
 
-// var jiraConfig *config.Config
-
 // NewClient returns an instance on JiraSession containing jiraClient.
 // It sets global jiratimeConfig with passed config parameter.
 func NewClient(config *config.Config) *JiraSession {
@@ -39,7 +37,7 @@ func NewClient(config *config.Config) *JiraSession {
 	return &JiraSession{Client: jiraClient}
 }
 
-// GetUserTickets is an expored function and returns a list of user worklogs
+// GetUserTickets is an exported function and returns a list of user worklogs
 func GetUserTickets(c jiraGetter) []jira.Issue {
 	items, err := c.getUserWorklog()
 	if err != nil {

@@ -1,0 +1,6 @@
+jiraurl: "https://test.jira"
+jirauser: "test.user"
+jirapassword: "test_password"
+datefrom : "2017-03-01"
+hoursdaily: 7
+maxsearchresults: 1000
