@@ -27,8 +27,8 @@ $(NAME): $(shell find . -name \*.go)
 # the standard build produces a "local" executable, a linux tgz, and a darwin (macos) tgz
 # uncomment and join the windows zip if you need it
 build: $(NAME) \
-		build/$(NAME)-darwin-amd64.tgz \
-		build/$(NAME)-linux-amd64.tgz
+		build/$(NAME)-darwin-amd64.tgz
+# build/$(NAME)-linux-amd64.tgz
 # build/$(NAME)-linux-arm.tgz \
 # build/$(NAME)-windows-amd64.zip
 
