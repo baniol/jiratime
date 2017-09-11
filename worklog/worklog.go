@@ -20,7 +20,10 @@ type JiraSession struct {
 }
 
 // HoursPerDay maps logged hours to days
-type HoursPerDay map[string]int
+type HoursPerDay map[string]struct {
+	Count     int
+	TicketKey []string
+}
 
 // HoursPerTicket maps logged hours per ticket
 type HoursPerTicket map[string]int
@@ -74,13 +77,16 @@ func MapHoursPerTicket(tickets []jira.Issue) (HoursPerTicket, int) {
 
 // MapHoursPerDay aggregates logged hours by day
 func MapHoursPerDay(tickets []jira.Issue) HoursPerDay {
-	perDay := make(HoursPerDay, 0)
+	perDay := make(HoursPerDay)
 	for _, i := range tickets {
 		worklogs := i.Fields.Worklog.Worklogs
 		for _, w := range worklogs {
 			t := time.Time(w.Started)
 			f := fmt.Sprintf("%d-%02d-%02d", t.Year(), t.Month(), t.Day())
-			perDay[f] += w.TimeSpentSeconds
+			v := perDay[f]
+			v.Count += w.TimeSpentSeconds
+			v.TicketKey = append(v.TicketKey, i.Key)
+			perDay[f] = v
 		}
 	}
 	return perDay

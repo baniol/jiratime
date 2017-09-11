@@ -2,8 +2,8 @@ package worklog
 
 import (
 	"fmt"
-
 	"github.com/baniol/jiratime/calendar"
+	"strings"
 )
 
 // DisplayPerTicket outputs the result to stdout
@@ -20,18 +20,20 @@ func DisplayPerTicket(tickets HoursPerTicket, total int) {
 // DisplayPerMonth outputs the result to stdout
 func DisplayPerMonth(perDay HoursPerDay, year int, month int) {
 
-	fmt.Print("Day\t\tHours\n")
+	fmt.Print("Day\t\tHours\tTickets\n")
 
 	logged := 0
 	days := calendar.GetDays(year, month)
 
-	filtered := make(HoursPerDay, 0)
+	filtered := make(HoursPerDay)
 
 	for _, d := range days {
-		hrs := perDay[d] / 3600
+		v := perDay[d]
+		hrs := v.Count / 3600
 		logged += hrs
-		filtered[d] = hrs
-		fmt.Printf("%s\t%d\n", d, hrs)
+		v.Count = hrs
+		filtered[d] = v
+		fmt.Printf("%s\t%d\t%s\n", d, hrs, strings.Join(v.TicketKey[:], ", "))
 	}
 
 	required := len(filtered) * jiratimeConfig.HoursDaily
