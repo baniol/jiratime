@@ -21,8 +21,13 @@ type JiraSession struct {
 
 // HoursPerDay maps logged hours to days
 type HoursPerDay map[string]struct {
-	Count     int
-	TicketKey []string
+	Count  int
+	Ticket []*ticketDetails
+}
+
+type ticketDetails struct {
+	Key   string
+	Hours int
 }
 
 // HoursPerTicket maps logged hours per ticket
@@ -85,7 +90,8 @@ func MapHoursPerDay(tickets []jira.Issue) HoursPerDay {
 			f := fmt.Sprintf("%d-%02d-%02d", t.Year(), t.Month(), t.Day())
 			v := perDay[f]
 			v.Count += w.TimeSpentSeconds
-			v.TicketKey = append(v.TicketKey, i.Key)
+			ticket := ticketDetails{i.Key, w.TimeSpentSeconds}
+			v.Ticket = append(v.Ticket, &ticket)
 			perDay[f] = v
 		}
 	}

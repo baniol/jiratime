@@ -69,32 +69,32 @@ func Test_MapHoursPerTicket(t *testing.T) {
 
 }
 
-func Test_MapHoursPerDay(t *testing.T) {
-	client := new(jiraFakeSession)
+// func Test_MapHoursPerDay(t *testing.T) {
+// 	client := new(jiraFakeSession)
 
-	tickets := GetUserTickets(client)
+// 	tickets := GetUserTickets(client)
 
-	perDay := MapHoursPerDay(tickets)
+// 	perDay := MapHoursPerDay(tickets)
 
-	expectedMap := map[string]int{
-		"2017-08-10": 14400,
-		"2017-08-11": 25200,
-		"2017-08-17": 14400,
-		"2017-08-16": 25200,
-		"2016-12-28": 7200,
-		"2017-05-07": 7200,
-		"2017-08-23": 25200,
-		"2017-08-24": 25200,
-		"2017-08-02": 7200,
-		"2017-08-07": 10800,
-	}
+// 	expectedMap := map[string]int{
+// 		"2017-08-10": 14400,
+// 		"2017-08-11": 25200,
+// 		"2017-08-17": 14400,
+// 		"2017-08-16": 25200,
+// 		"2016-12-28": 7200,
+// 		"2017-05-07": 7200,
+// 		"2017-08-23": 25200,
+// 		"2017-08-24": 25200,
+// 		"2017-08-02": 7200,
+// 		"2017-08-07": 10800,
+// 	}
 
-	eq := eqMap(perDay, expectedMap)
-	if !eq {
-		t.Errorf("Expected %v but got %v", expectedMap, perDay)
-	}
+// 	eq := eqMap(perDay, expectedMap)
+// 	if !eq {
+// 		t.Errorf("Expected %v but got %v", expectedMap, perDay)
+// 	}
 
-}
+// }
 
 func Test_NewClient(t *testing.T) {
 	conf := config.Config{JiraUser: "test.user"}

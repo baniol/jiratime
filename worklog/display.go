@@ -27,13 +27,20 @@ func DisplayPerMonth(perDay HoursPerDay, year int, month int) {
 
 	filtered := make(HoursPerDay)
 
+	// @TODO refactor
 	for _, d := range days {
 		v := perDay[d]
 		hrs := v.Count / 3600
 		logged += hrs
 		v.Count = hrs
 		filtered[d] = v
-		fmt.Printf("%s\t%d\t%s\n", d, hrs, strings.Join(v.TicketKey[:], ", "))
+
+		ticketDetails := make([]string, 0)
+		for _, t := range v.Ticket {
+			ticketDetails = append(ticketDetails, fmt.Sprintf("%s (%d)", t.Key, t.Hours/3600))
+		}
+
+		fmt.Printf("%s\t%d\t%s\n", d, hrs, strings.Join(ticketDetails[:], ","))
 	}
 
 	required := len(filtered) * jiratimeConfig.HoursDaily

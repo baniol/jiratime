@@ -2,7 +2,7 @@
 
 NAME=jiratime
 
-VERSION=0.2.1
+VERSION=0.2.2
 
 DEPEND=golang.org/x/tools/cmd/cover \
 		github.com/mattn/goveralls \
