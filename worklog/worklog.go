@@ -41,7 +41,7 @@ func NewClient(config *config.Config) *JiraSession {
 	if err != nil {
 		panic(err)
 	}
-	jiratimeConfig = config
+	jiratimeConfig = config // TODO: does it really belong there?
 	return &JiraSession{Client: jiraClient}
 }
 
@@ -73,8 +73,11 @@ func MapHoursPerTicket(tickets []jira.Issue) (HoursPerTicket, int) {
 	for _, i := range tickets {
 		worklogs := i.Fields.Worklog.Worklogs
 		for _, w := range worklogs {
-			perTicket[i.Key] += w.TimeSpentSeconds
-			totalSpent += w.TimeSpentSeconds
+			// TODO: add tests checking author
+			if w.Author.Name == jiratimeConfig.JiraUser {
+				perTicket[i.Key] += w.TimeSpentSeconds
+				totalSpent += w.TimeSpentSeconds
+			}
 		}
 	}
 	return perTicket, totalSpent
@@ -86,13 +89,16 @@ func MapHoursPerDay(tickets []jira.Issue) HoursPerDay {
 	for _, i := range tickets {
 		worklogs := i.Fields.Worklog.Worklogs
 		for _, w := range worklogs {
-			t := time.Time(w.Started)
-			f := fmt.Sprintf("%d-%02d-%02d", t.Year(), t.Month(), t.Day())
-			v := perDay[f]
-			v.Count += w.TimeSpentSeconds
-			ticket := ticketDetails{i.Key, w.TimeSpentSeconds}
-			v.Ticket = append(v.Ticket, &ticket)
-			perDay[f] = v
+			// TODO: add tests checking author
+			if w.Author.Name == jiratimeConfig.JiraUser {
+				t := time.Time(w.Started)
+				f := fmt.Sprintf("%d-%02d-%02d", t.Year(), t.Month(), t.Day())
+				v := perDay[f]
+				v.Count += w.TimeSpentSeconds
+				ticket := ticketDetails{i.Key, w.TimeSpentSeconds}
+				v.Ticket = append(v.Ticket, &ticket)
+				perDay[f] = v
+			}
 		}
 	}
 	return perDay
