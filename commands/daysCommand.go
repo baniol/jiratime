@@ -32,8 +32,8 @@ func (c *DaysCommand) Run(args []string) int {
 
 	year, month := calendar.PrepareDateParams(yearParam, monthParam)
 
-	hoursPerDay := worklog.MapHoursPerDay(tickets)
-	worklog.DisplayPerMonth(hoursPerDay, year, month)
+	hoursPerDay := worklog.MapHoursPerDay(config, tickets)
+	client.DisplayPerMonth(hoursPerDay, year, month)
 
 	return 0
 }

@@ -12,11 +12,10 @@ type jiraGetter interface {
 	getUserWorklog() ([]jira.Issue, error)
 }
 
-var jiratimeConfig *config.Config
-
 // JiraSession represents a struct with jiraClient
 type JiraSession struct {
 	Client *jira.Client
+	Config *config.Config
 }
 
 // HoursPerDay maps logged hours to days
@@ -34,15 +33,13 @@ type ticketDetails struct {
 type HoursPerTicket map[string]int
 
 // NewClient returns an instance on JiraSession containing jiraClient.
-// It sets global jiratimeConfig with passed config parameter.
 func NewClient(config *config.Config) *JiraSession {
 	jiraClient, err := jira.NewClient(nil, config.JiraURL)
 	jiraClient.Authentication.SetBasicAuth(config.JiraUser, config.JiraPassword)
 	if err != nil {
 		panic(err)
 	}
-	jiratimeConfig = config // TODO: does it really belong there?
-	return &JiraSession{Client: jiraClient}
+	return &JiraSession{Client: jiraClient, Config: config}
 }
 
 // GetUserTickets is an exported function and returns a list of user worklogs
@@ -56,8 +53,8 @@ func GetUserTickets(c jiraGetter) []jira.Issue {
 
 // Worklog returns a list of Issues where a particular user saved working hours
 func (s *JiraSession) getUserWorklog() ([]jira.Issue, error) {
-	jql := fmt.Sprintf("worklogDate>=%s AND worklogAuthor=%s", jiratimeConfig.DateFrom, jiratimeConfig.JiraUser)
-	options := &jira.SearchOptions{MaxResults: jiratimeConfig.MaxSearchResults, Fields: []string{"worklog"}}
+	jql := fmt.Sprintf("worklogDate>=%s AND worklogAuthor=%s", s.Config.DateFrom, s.Config.JiraUser)
+	options := &jira.SearchOptions{MaxResults: s.Config.MaxSearchResults, Fields: []string{"worklog"}}
 	tickets, _, err := s.Client.Issue.Search(jql, options)
 
 	if err != nil {
@@ -67,14 +64,14 @@ func (s *JiraSession) getUserWorklog() ([]jira.Issue, error) {
 }
 
 // MapHoursPerTicket aggregates logged hours by ticket
-func MapHoursPerTicket(tickets []jira.Issue) (HoursPerTicket, int) {
+func MapHoursPerTicket(c *config.Config, tickets []jira.Issue) (HoursPerTicket, int) {
 	var totalSpent int
 	perTicket := make(HoursPerTicket, 0)
 	for _, i := range tickets {
 		worklogs := i.Fields.Worklog.Worklogs
 		for _, w := range worklogs {
 			// TODO: add tests checking author
-			if w.Author.Name == jiratimeConfig.JiraUser {
+			if w.Author.Name == c.JiraUser {
 				perTicket[i.Key] += w.TimeSpentSeconds
 				totalSpent += w.TimeSpentSeconds
 			}
@@ -84,13 +81,13 @@ func MapHoursPerTicket(tickets []jira.Issue) (HoursPerTicket, int) {
 }
 
 // MapHoursPerDay aggregates logged hours by day
-func MapHoursPerDay(tickets []jira.Issue) HoursPerDay {
+func MapHoursPerDay(c *config.Config, tickets []jira.Issue) HoursPerDay {
 	perDay := make(HoursPerDay)
 	for _, i := range tickets {
 		worklogs := i.Fields.Worklog.Worklogs
 		for _, w := range worklogs {
 			// TODO: add tests checking author
-			if w.Author.Name == jiratimeConfig.JiraUser {
+			if w.Author.Name == c.JiraUser {
 				t := time.Time(w.Started)
 				f := fmt.Sprintf("%d-%02d-%02d", t.Year(), t.Month(), t.Day())
 				v := perDay[f]

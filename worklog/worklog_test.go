@@ -45,11 +45,16 @@ func eqMap(a, b map[string]int) bool {
 }
 
 func Test_MapHoursPerTicket(t *testing.T) {
+
+	config := &config.Config{
+		JiraUser: "john.doe",
+	}
+
 	client := new(jiraFakeSession)
 
 	tickets := GetUserTickets(client)
 
-	perTicket, total := MapHoursPerTicket(tickets)
+	perTicket, total := MapHoursPerTicket(config, tickets)
 	expected := 162000
 	if total != expected {
 		t.Errorf("Expected %v but got %v", expected, total)
@@ -104,6 +109,4 @@ func Test_NewClient(t *testing.T) {
 	if check != expected {
 		t.Errorf("Expected %v but got %v", expected, check)
 	}
-
-	// @TODO check content of jiratimeConfig here ?
 }

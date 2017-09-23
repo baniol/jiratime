@@ -18,7 +18,7 @@ func DisplayPerTicket(tickets HoursPerTicket, total int) {
 }
 
 // DisplayPerMonth outputs the result to stdout
-func DisplayPerMonth(perDay HoursPerDay, year int, month int) {
+func (s *JiraSession) DisplayPerMonth(perDay HoursPerDay, year int, month int) {
 
 	fmt.Print("Day\t\tHours\tTickets\n")
 
@@ -43,7 +43,7 @@ func DisplayPerMonth(perDay HoursPerDay, year int, month int) {
 		fmt.Printf("%s\t%d\t%s\n", d, hrs, strings.Join(ticketDetails[:], ","))
 	}
 
-	required := len(filtered) * jiratimeConfig.HoursDaily
+	required := len(filtered) * s.Config.HoursDaily
 
 	fmt.Println("-----------------")
 	fmt.Println("Logged\tRequired\t")

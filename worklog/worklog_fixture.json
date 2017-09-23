@@ -15,9 +15,9 @@
                     "worklogs": [
                         {
                             "author": {
-                                "name": "joe.doe",
-                                "key": "joe.doe",
-                                "displayName": "joe.doe"
+                                "name": "john.doe",
+                                "key": "john.doe",
+                                "displayName": "john.doe"
                             },
                             "created": "2017-01-01T11:59:33.096+0100",
                             "updated": "2017-01-01T11:59:33.096+0100",
@@ -42,9 +42,9 @@
                     "worklogs": [
                         {
                             "author": {
-                                "name": "joe.doe",
-                                "key": "joe.doe",
-                                "displayName": "joe.doe"
+                                "name": "john.doe",
+                                "key": "john.doe",
+                                "displayName": "john.doe"
                             },
                             "created": "2017-05-10T11:59:33.096+0100",
                             "updated": "2017-05-12T11:59:33.096+0100",
@@ -69,9 +69,9 @@
                     "worklogs": [
                         {
                             "author": {
-                                "name": "joe.doe",
-                                "key": "joe.doe",
-                                "displayName": "joe.doe"
+                                "name": "john.doe",
+                                "key": "john.doe",
+                                "displayName": "john.doe"
                             },
                             "created": "2017-08-12T10:15:56.084+0100",
                             "updated": "2017-08-12T10:15:56.084+0100",
@@ -83,9 +83,9 @@
                         },
                         {
                             "author": {
-                                "name": "joe.doe",
-                                "key": "joe.doe",
-                                "displayName": "joe.doe"
+                                "name": "john.doe",
+                                "key": "john.doe",
+                                "displayName": "john.doe"
                             },
                             "created": "2017-08-24T23:47:32.458+0100",
                             "updated": "2017-08-24T23:47:32.458+0100",
@@ -97,14 +97,14 @@
                         },
                         {
                             "author": {
-                                "name": "joe.doe",
-                                "key": "joe.doe",
-                                "displayName": "joe.doe"
+                                "name": "john.doe",
+                                "key": "john.doe",
+                                "displayName": "john.doe"
                             },
                             "updateAuthor": {
-                                "name": "joe.doe",
-                                "key": "joe.doe",
-                                "displayName": "joe.doe"
+                                "name": "john.doe",
+                                "key": "john.doe",
+                                "displayName": "john.doe"
                             },
                             "created": "2017-08-24T23:49:21.173+0100",
                             "updated": "2017-08-24T23:49:21.173+0100",
@@ -129,10 +129,10 @@
                     "worklogs": [
                         {
                             "author": {
-                                "name": "joe.doe",
-                                "key": "joe.doe",
+                                "name": "john.doe",
+                                "key": "john.doe",
                                 "accountId": "435a4f:9865cc55-3456-abc7-654b-1fa0d9a98a561",
-                                "displayName": "joe.doe"
+                                "displayName": "john.doe"
                             },
                             "created": "2017-08-10T12:28:49.128+0100",
                             "updated": "2017-08-10T12:28:49.128+0100",
@@ -144,10 +144,10 @@
                         },
                         {
                             "author": {
-                                "name": "joe.doe",
-                                "key": "joe.doe",
+                                "name": "john.doe",
+                                "key": "john.doe",
                                 "accountId": "435a4f:9865cc55-3456-abc7-654b-1fa0d9a98a561",
-                                "displayName": "joe.doe"
+                                "displayName": "john.doe"
                             },
                             "created": "2017-08-11T13:54:09.467+0100",
                             "updated": "2017-08-11T13:54:09.467+0100",
@@ -159,10 +159,10 @@
                         },
                         {
                             "author": {
-                                "name": "joe.doe",
-                                "key": "joe.doe",
+                                "name": "john.doe",
+                                "key": "john.doe",
                                 "accountId": "435a4f:9865cc55-3456-abc7-654b-1fa0d9a98a561",
-                                "displayName": "joe.doe"
+                                "displayName": "john.doe"
                             },
                             "created": "2017-08-12T13:29:21.356+0100",
                             "updated": "2017-08-12T13:29:21.356+0100",
@@ -174,10 +174,10 @@
                         },
                         {
                             "author": {
-                                "name": "joe.doe",
-                                "key": "joe.doe",
+                                "name": "john.doe",
+                                "key": "john.doe",
                                 "accountId": "435a4f:9865cc55-3456-abc7-654b-1fa0d9a98a561",
-                                "displayName": "joe.doe"
+                                "displayName": "john.doe"
                             },
                             "created": "2017-08-18T07:28:53.627+0100",
                             "updated": "2017-08-18T07:28:53.627+0100",
@@ -189,10 +189,10 @@
                         },
                         {
                             "author": {
-                                "name": "joe.doe",
-                                "key": "joe.doe",
+                                "name": "john.doe",
+                                "key": "john.doe",
                                 "accountId": "435a4f:9865cc55-3456-abc7-654b-1fa0d9a98a561",
-                                "displayName": "joe.doe"
+                                "displayName": "john.doe"
                             },
                             "created": "2016-12-10T07:29:10.591+0100",
                             "updated": "2016-12-10T07:29:10.591+0100",

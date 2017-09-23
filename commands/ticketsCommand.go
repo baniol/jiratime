@@ -25,7 +25,7 @@ func (c *TicketCommand) Run(args []string) int {
 	client := worklog.NewClient(config)
 	tickets := worklog.GetUserTickets(client)
 
-	perTicket, total := worklog.MapHoursPerTicket(tickets)
+	perTicket, total := worklog.MapHoursPerTicket(config, tickets)
 	worklog.DisplayPerTicket(perTicket, total)
 	return 0
 }
